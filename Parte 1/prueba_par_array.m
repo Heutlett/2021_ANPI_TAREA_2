@@ -1,8 +1,8 @@
 pkg load parallel
-nmax = 10;
 
-ni = 1:nmax; # Arreglo de valores que se utilizaran en cada calculo
+v_inicial = 1:10; # Arreglo de valores que se utilizaran en cada calculo
 
-B=5; # Variable numerica
+a=5; # Variable numerica
 
-A = pararrayfun(4,@(n) myfun(n,B),ni) 
+v_final = pararrayfun(4,@(n) myfun(n,a),v_inicial) 
+
