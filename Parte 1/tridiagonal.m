@@ -12,6 +12,7 @@ function A=tridiagonal(p,q,m)
   %            A = matriz de tamano mxm
   A=zeros(m);
   
+  
   A(1,1) = 2*q(1);
   A(1,2) = q(1);
   
