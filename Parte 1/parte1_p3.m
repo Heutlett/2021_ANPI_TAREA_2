@@ -9,20 +9,18 @@ function [xk,k,error]=parte1_p3(A,b,tol,iterMax,x0,cpus)
     ni = 1:m;    # Crea un vector de los indices i que se utilizaran en el 
                  # calculo en paralelo
     
-    
-    # Se llama la funcion que se ejecutara en paralelo y se le indica que
-    # la variable n va a iterar en cada calculo.
+    # Se llama la funcion que se ejecutara en paralelo y se le pasa ni como el
+    # arreglo al que se va a evaluar en la funcion xk_plus_1, este arreglo va
+    # desde 1 hasta m, y sus valores serán utilizados como el indice i
     xk = pararrayfun(cpus,@(n) xk_plus_1(n,A,b,xk),ni);
     
     error = norm((A*xk')-b);
     
     if error < tol | k >= iterMax
-        #xk = transpose(xk);
         return
       endif
       
     k+=1;
     
   endwhile
-  #xk = transpose(xk);
 end
