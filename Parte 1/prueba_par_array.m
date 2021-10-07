@@ -1,8 +1,8 @@
 pkg load parallel
-nmax = 10; # Number of points where the function is calculated
+nmax = 10;
 
-# Forth method, using parrayfun to call "myfun"
+ni = 1:nmax; # Arreglo de valores que se utilizaran en cada calculo
 
-ni = 1:nmax; 
-B=5;
-A = pararrayfun(4,@(n) myfun(n,B),ni)
+B=5; # Variable numerica
+
+A = pararrayfun(4,@(n) myfun(n,B),ni) 

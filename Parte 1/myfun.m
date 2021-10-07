@@ -1,4 +1,3 @@
-function A = myfun(n, B); # Function used in this test
-  n
-  A=n*B;
+function A = myfun(n, B); 
+  A=n*B
 endfunction
