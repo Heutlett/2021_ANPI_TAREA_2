@@ -1,7 +1,8 @@
 clc;clear;
 warning off;
 pkg load parallel
-% Test parte1_p2
+
+% Test parte1_p2 y parte1_p3
 
 %Ejemplo tarea
 
@@ -10,21 +11,8 @@ m=242;
 b=ones(m,1);
 x0=zeros(242,1);
 A = tridiagonal(p, q, m);
-%A=tridiagonal(p(2:m),q(1:m-1),m);
 tol = 10^-5;
 iterMax = 1000;
-
-
-% Ejemplo corto
-%m = 4;
-%p = q = [5,10,15]
-%A = tridiagonal(p, q, m)
-%b = ones(m,1)
-%x0 = zeros(m,1)
-%tol = 10^-15;
-%iterMax = 100;
-
-%inv(A)*b;
 
 % Metodo paralelo
 tic
