@@ -1,7 +1,0 @@
-1- Preguntar si está bien como implemento los ejemplos para correr.
-2- Preguntar si está bien que haga las funciones en archivos aparte.
-3- Preguntar si es necesario cortar los arreglos para el ejemplo
-de 242
-4- Preguntar si el objetivo de la parte 3 es llegar al resultado de la matriz Ax = b?
-5- Preguntar si ando cerca del resultado.
-6- Preguntar si en la parte 3 es necesario mostrar resultados especificos y tiempos como los mencionados en la parte 4?
