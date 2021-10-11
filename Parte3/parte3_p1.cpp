@@ -51,7 +51,7 @@ mat pseudoInversa(mat A)
 
     double alpha_0 = 5e-10;
     double alpha_1 = 2e-11;
-    double tol = 1e-5 + 1;
+    double tol = 1e-5;
     double error = tol + 1;
 
     //Calculo de los valores iniciales
