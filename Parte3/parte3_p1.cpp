@@ -6,7 +6,6 @@
 using namespace arma;
 
 /**
-
 Funcion que generada una matriz de 45 x 30 segun las condiciones dadas en la especificacion
 */
 mat generarMatriz()

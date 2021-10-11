@@ -1,17 +1,42 @@
+##% Ejemplo tarea, descomentar con ctrl + shift + r
+##
+##function ejemplo_parte1_p2
+##  
+##  %Ejemplo tarea
+##
+##  p=q=[1:0.1:25];
+##  m=242;
+##  b=ones(m,1);
+##  x0=zeros(242,1);
+##  A = tridiagonal(p, q, m);
+##  tol = 10^-5;
+##  iterMax = 1000;
+##  
+##  % Metodo normal
+##  [xk,k,error] = parte1_p2(A, b, tol, iterMax,x0)
+##  
+##endfunction
+
+
 function [xk,k,error]=parte1_p2(A,b,tol,iterMax,x0)
   % Funcion que implementa el metodo de Jacobi para resolver un sistema de 
-  % ecuaciones lineal Ax = b.
+  % ecuaciones lineales Ax = b.
   %
-  % Sintaxis:  xk=parte1_p2(A,b,tol,iterMax,x0)
+  % Sintaxis:  [xk,k,error]=parte1_p2(A,b,tol,iterMax,x0)
   %
-  % Parametros iniciales: 
+  % Parametros de entrada: 
   %            A = matriz de coeficientes 
-  %            q = vector de terminos independientes
+  %            b = vector de terminos independientes
   %            tol = un número positivo que representa a la tolerancia 
   %                 para el criterio ||A * xk - b|| < tol
   %            iterMax= cantidad de iteraciones maximas
+  %            x0 = vector de valores iniciales
+  %
   % Parametros de salida:                           
-  %            A = matriz de tamano mxm
+  %            xk = es un vector que representa la solucion de Ax = b.
+  %            k = iteracion en la que se cumplio el criterio de la tolerancia
+  %            error = entero positivo que representa el error final obtenido
+  
   m=length(A);
   xk=x0;
   error = tol+1;
