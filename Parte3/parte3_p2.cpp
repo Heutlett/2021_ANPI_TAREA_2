@@ -50,7 +50,8 @@ mat pseudoInversa(mat A)
 
     double alpha_0 = 5e-10;
     double alpha_1 = 2e-11;
-    double tol = 10e-5;
+    double tol = 1e-5;
+    double error = tol + 1;
 
     mat X0 = alpha_0*A.t();
     mat X1 = alpha_1*A.t();
@@ -71,7 +72,7 @@ mat pseudoInversa(mat A)
         
         X_prev = temp;
 
-        double error = norm(A*X*A - A, "fro");
+        error = norm(A*X*A - A, "fro");
         
         if (error < tol){
             
@@ -103,6 +104,6 @@ int main(){
 
     mat x = A_inv * b;
 
-    std::cout << x << endl;
+    std::cout << "La solucion del problema esta dado por el vector : " << x << endl;
 }
 

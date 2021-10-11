@@ -84,7 +84,7 @@ mat pseudoInversa(mat A)
 
     }
 
-    std::cout << "El error esta dado por " << error <<  "\n";
+    std::cout << "El error esta dado por del metodo despuesta de calcular la pseudoinversa esta dado por :  " << error <<  "\n";
     return X;
 
 }
