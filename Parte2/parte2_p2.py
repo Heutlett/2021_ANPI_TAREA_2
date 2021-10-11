@@ -148,7 +148,7 @@ def jacobiano(f, x_sym):
 
 
 # Variacion metodo de newton_raphson para resolver un sistemas de 
-# ecuaciones lineales
+# ecuaciones lineales 
 #
 # Sintaxis:  newton_raphson(x0, f, x, tol, iterMax)
 #
@@ -168,32 +168,34 @@ def newton_raphson(x0, f, x, tol, iterMax):
     xk = x0
     err = []
 
-    x_sym = variables_simbolicas(x)
-    J = jacobiano(f,x_sym)
-    f_n = funciones_simbolicas(f)
+    x_sym = variables_simbolicas(x) #Convierte a simbolicas las variables dadas 
+    J = jacobiano(f,x_sym) #Calcula el Jacobiano de la funcion
+    f_n = funciones_simbolicas(f) #Convierte en simbolicas las funciones dadas
 
 
     while(k < iterMax):
 
 
-        f_k = evaluar_funciones(f_n, x_sym, xk).astype(np.float64)
-        J_k = evaluar_jacobiano(J, x_sym, xk).astype(np.float64)
+        f_k = evaluar_funciones(f_n, x_sym, xk).astype(np.float64) #Evalua las funciones con el valor de xk actual
+        J_k = evaluar_jacobiano(J, x_sym, xk).astype(np.float64) #Evalua el Jacobiano con el valor de xk actual
 
-        y = np.linalg.solve(J_k, f_k)
-        xk = xk - y
+        y = np.linalg.solve(J_k, f_k) #Resuelve la ecuacion y = J^(-1) * f_k 
 
-        f_k = evaluar_funciones(f_n, x_sym, xk)
+        xk = xk - y #Calcula el nuevo valor de xk dado por xk =  xk - J^(-1) * f_k 
+
+        f_k = evaluar_funciones(f_n, x_sym, xk) #Se evaluan las funciones con el valor de xk
 
 
-        e_k = np.linalg.norm(f_k) 
-        if (e_k < tol):
+        e_k = np.linalg.norm(f_k, 2)  #Se calcula la norma 2 de f_k 
+
+        if (e_k < tol): #Verifica el punto de parada 
             break
 
         err.append(e_k)
         k += 1
 
         
-    print("La solucion del sistema de ecuaciones esta dado por el vector x = ", xk)
+    print("La solucion del sistema de ecuaciones esta dado por el vector x = ", xk.transpose(), " con ", k, " iteraciones y con un error de ", e_k)
     
     #Graficacion       
     plt.rcParams.update({'font.size': 14})
@@ -215,8 +217,8 @@ def newton_raphson(x0, f, x, tol, iterMax):
 #Fuciones a ejemplo obtenidas a partir del pdf
 f = ["x1^2 - 2*x1 - x2 + 0.5", "x1^2 + 4*x2^2 - 4"]
 x = ['x1', 'x2'] #Variables 
-x0 = [3,2] #Vector inicial 
-tol = 10**-1 #Tolerancia 
+x0 = [1.6, 0] #Vector inicial 
+tol = 10**-5 #Tolerancia 
 iterMax = 1000 #Iteraciones maximas
 
 res = newton_raphson(x0, f, x, tol, iterMax)
